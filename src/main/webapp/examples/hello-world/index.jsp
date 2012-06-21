@@ -3,9 +3,13 @@
 <%
     // Pull the signed request out of the request body and unsign it.
     Map<String, String[]> parameters = request.getParameterMap();
-    String signedRequest = parameters.get("signed_request")[0];
-    SignedRequest.unsign(signedRequest, "");
-    SignedRequest.unsignToString(signedRequest, "");
+    String[] signedRequest = parameters.get("signed_request");
+    if (signedRequest == null) {%>
+        This App must be invoked via a signed request!<%
+        return;
+    }
+    SignedRequest.unsign(signedRequest[0], "");
+    SignedRequest.unsignToString(signedRequest[0], "");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
