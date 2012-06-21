@@ -29,7 +29,7 @@
     <script type="text/javascript" src="/sdk/js/client.js"></script>
 
     <!-- Third part libraries, substitute with your own -->
-    <script type="text/javascript" src="/scripts/json.js"></script>
+    <script type="text/javascript" src="/scripts/json2.js"></script>
 
     <script>
         if (self === top) {
