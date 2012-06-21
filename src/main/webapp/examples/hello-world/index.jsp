@@ -8,8 +8,9 @@
         This App must be invoked via a signed request!<%
         return;
     }
-    SignedRequest.unsign(signedRequest[0], "");
-    SignedRequest.unsignToString(signedRequest[0], "");
+    String yourConsumerSecret="3470819724070098100";
+    SignedRequest.unsign(signedRequest[0], yourConsumerSecret);
+    SignedRequest.unsignToString(signedRequest[0], yourConsumerSecret);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
