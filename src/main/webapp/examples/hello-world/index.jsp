@@ -9,8 +9,7 @@
         return;
     }
     String yourConsumerSecret="3470819724070098100";
-    SignedRequest.unsign(signedRequest[0], yourConsumerSecret);
-    String signedRequestJson = SignedRequest.unsignToString(signedRequest[0], yourConsumerSecret);
+    String signedRequestJson = SignedRequest.unsignAsJson(signedRequest[0], yourConsumerSecret);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -19,14 +18,14 @@
 
     <title>Hello World Canvas Example</title>
 
-    <link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />
+    <%--<link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />--%>
 
     <!-- These can all be combined/compressed into a single file. -->
     <script type="text/javascript" src="/sdk/js/connect.js"></script>
-    <script type="text/javascript" src="/sdk/js/xd.js"></script>
-    <script type="text/javascript" src="/sdk/js/cookies.js"></script>
-    <script type="text/javascript" src="/sdk/js/oauth.js"></script>
-    <script type="text/javascript" src="/sdk/js/client.js"></script>
+    <%--<script type="text/javascript" src="/sdk/js/xd.js"></script>--%>
+    <%--<script type="text/javascript" src="/sdk/js/cookies.js"></script>--%>
+    <%--<script type="text/javascript" src="/sdk/js/oauth.js"></script>--%>
+    <%--<script type="text/javascript" src="/sdk/js/client.js"></script>--%>
 
     <!-- Third part libraries, substitute with your own -->
     <script type="text/javascript" src="/scripts/json2.js"></script>

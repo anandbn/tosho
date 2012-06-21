@@ -50,7 +50,7 @@ public class SignedRequest {
     }
 
 
-    public static String unsignToString(String input, String secret) throws SecurityException {
+    public static String unsignAsJson(String input, String secret) throws SecurityException {
 
         String[] split = getParts(input);
 
@@ -69,8 +69,6 @@ public class SignedRequest {
             writer = new StringWriter();
             mapper.writeValue(writer, o);
             algorithm = (String)o.get("algorithm");
-            //System.out.println("Writer " + writer.toString());
-
         } catch (IOException e) {
             throw new SecurityException(String.format("Error [%s] deserializing JSON to Object [%s]", e.getMessage(),
                     typeRef.getClass().getName()), e);
