@@ -39,12 +39,13 @@
 
         connect(function() {
             var sr = JSON.parse('<%=signedRequestJson%>');
-            connect.byId('username').innerHTML = sr.fullName;
+            connect.byId('username').innerHTML = sr.context.user.fullName;
         });
 
     </script>
 </head>
 <body>
-  Hello <span id='username'></span>
+    <br/>
+    <h1>Hello <span id='username'></span></h1>
 </body>
 </html>
