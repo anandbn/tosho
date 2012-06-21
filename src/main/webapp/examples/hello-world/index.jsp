@@ -18,14 +18,9 @@
 
     <title>Hello World Canvas Example</title>
 
-    <%--<link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />--%>
+    <link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />
 
-    <!-- These can all be combined/compressed into a single file. -->
     <script type="text/javascript" src="/sdk/js/connect.js"></script>
-    <%--<script type="text/javascript" src="/sdk/js/xd.js"></script>--%>
-    <%--<script type="text/javascript" src="/sdk/js/cookies.js"></script>--%>
-    <%--<script type="text/javascript" src="/sdk/js/oauth.js"></script>--%>
-    <%--<script type="text/javascript" src="/sdk/js/client.js"></script>--%>
 
     <!-- Third part libraries, substitute with your own -->
     <script type="text/javascript" src="/scripts/json2.js"></script>
