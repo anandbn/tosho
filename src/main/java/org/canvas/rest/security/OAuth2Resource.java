@@ -29,21 +29,9 @@ import java.net.URLEncoder;
 public class OAuth2Resource {
 
     // For working on Heroku
-//    private final static String CLIENT_ID       = "3MVG9QDx8IX8nP5QYEJ48pkpxl49Vlpu_WpuXp0.159BvxH2HYRb7jFZaihagf0R.DvHm.GL92oyIQ8ZxW_.6";
-//    private final static String CLIENT_SECRET   = "5337471331272406440";
-//    private final static String REDIRECT_URI    = "https://canvas.herokuapp.com/rest/oauth2/_callback";
-
-    // For localhost debugging
-//    private final static String CLIENT_ID       = "3MVG9QDx8IX8nP5QYEJ48pkpxlzvIvsxmQrPlfLa7pXfvLS5w.Qq60K.Qpu_DRaJ7XmAbTrH6azkh.pGB1l6A";
-//    private final static String CLIENT_SECRET   = "4960486608388807153";
-//    private final static String REDIRECT_URI    = "https://localhost:8443/rest/oauth2/_callback";
-
-
-    // Salesforce information  http://wiki.developerforce.com/page/Digging_Deeper_into_OAuth_2.0_on_Force.com
     private final static String AUTHORIZE_URL   = "%s/services/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=%s&scope=%s&display=%s&state=%s";
     private final static String ENVIRONMENT     = "https://login.salesforce.com";
 //    private final static String ENVIRONMENT     = "http://cjolley-wsl.internal.salesforce.com:8080";
-    //private final static String ENVIRONMENT     = "https://localhost:8443";
     private final static String SCOPE           = "full"; //"api%20refresh_token"; //chatter_api
     private final static String DISPLAY         = "popup";   // page, popup, touch
     private final static String TOKEN_URL       = ENVIRONMENT + "/services/oauth2/token";
@@ -61,12 +49,6 @@ public class OAuth2Resource {
                             @QueryParam("redirect_uri") String redirectUri,
                             @QueryParam("state") String state,
                             @Context HttpServletRequest httpRequest) {
-
-//        @DefaultValue(CLIENT_ID) @QueryParam("client_id") String clientId,
-//        @DefaultValue(CLIENT_SECRET) @QueryParam("client_secret") String clientSecret,
-//        @DefaultValue(REDIRECT_URI) @QueryParam("redirect_uri") String redirectUri,
-
-        System.out.println("STATE1: " + state);
 
         // @TODO: this is just temporary until I get client side flow going.
         httpRequest.getSession().setAttribute("CLIENT_ID", clientId);
@@ -147,10 +129,7 @@ public class OAuth2Resource {
                 System.out.println("STATE: " + state);
 
                 String redirect = state; //"/crazyrefresh.html";
-                //return Response.seeOther(redirectUri).build();}
-
                 String domain = new NewCookie("hack", accessToken).getDomain();
-                //System.out.println("Setting cookies with domain: " + domain);
                 return Response.ok(new Viewable(redirect))
                                .cookie(new NewCookie("access_token", accessToken, "/", domain, null, NewCookie.DEFAULT_MAX_AGE, true))
                                .cookie(new NewCookie("instance_url", instanceUrl, "/", domain, null, NewCookie.DEFAULT_MAX_AGE, true))
