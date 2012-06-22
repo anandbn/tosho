@@ -51,9 +51,7 @@
             }
             var sr = JSON.parse('<%=signedRequestJson%>');
             chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
-                if (data.status === 201) {
-                    connect.byId.innerHTML = "Success"
-                }
+                connect.byId('status').innerHTML = data.statusText;
             });
         </script>
     </section>
