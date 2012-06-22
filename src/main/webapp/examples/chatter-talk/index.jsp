@@ -42,7 +42,7 @@
                     Try running Google Chrome with the <code>--enable-speech-input</code> flag.</p>
             </div>
             <div class="noflex vbox boxcenter" style="height:50px;text-align:center">
-                <button id="chatter-submit" type="submit"></button>
+                <button id="chatter-submit" type="submit"></button>&nbsp<span id="status" style="color:green"></span>
             </div>
         </div>
         <script>
@@ -50,7 +50,11 @@
                 document.querySelector('#speech-input p').style.display = 'block';
             }
             var sr = JSON.parse('<%=signedRequestJson%>');
-            chatterTalk.init(sr, "chatter-submit", "speech-input-field");
+            chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
+                if (data.status === 201) {
+                    connect.byId.innerHTML = "Success"
+                }
+            });
         </script>
     </section>
 </div>
