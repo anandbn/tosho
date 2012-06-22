@@ -13,7 +13,6 @@ if (!chatterTalk) {
     chatterTalk.init =  function(sr, button, input, callback) {
         $$.byId(button).onclick=function() {
             var value = $$.byId(input).value;
-            alert('CLicked!!' + value);
             chatterTalk.post(sr, value, callback);
         };
     };

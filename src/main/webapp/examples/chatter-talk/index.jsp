@@ -29,20 +29,22 @@
     <section>
         <div id="stylized" class="flex hbox boxcenter">
 
-            <div class="noflex vbox boxcenter" style="height:130px;text-align:center">
-            <img id="profile-image" alt="image" src="/images/image.gif" width="100" height="100" />
+            <div style="height:50px;text-align:center">
             <p>
-                <strong>Max Power</strong><br/>
+                <strong>Chatter Talk</strong><br/>
             </p>
             </div>
 
-            <div class="noflex vbox boxcenter" style="height:100px;text-align:center">
+            <div style="height:100px;text-align:center">
                 <input id="speech-input-field" type="text" x-webkit-speech />
                 <p style="display:none">Speech input is not enabled in your browser.<br>
                     Try running Google Chrome with the <code>--enable-speech-input</code> flag.</p>
             </div>
-            <div class="noflex vbox boxcenter" style="height:50px;text-align:center">
-                <button id="chatter-submit" type="submit"></button>&nbsp<span id="status" style="color:green"></span>
+            <div style="height:50px;text-align:center">
+                <button id="chatter-submit" type="submit"></button>
+            </div>
+            <div style="height:50px;text-align:center">
+                <span id="status" style="color:green"></span>
             </div>
         </div>
         <script>
