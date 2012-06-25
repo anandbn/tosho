@@ -17,6 +17,7 @@
 
     <title>Chatter Talk Example</title>
     <link rel="stylesheet" type="text/css" href="/examples/chatter-talk/talk.css" />
+
     <script type="text/javascript" src="/sdk/js/connect.js"></script>
     <script type="text/javascript" src="/sdk/js/xd.js"></script>
     <script type="text/javascript" src="/sdk/js/client.js"></script>
