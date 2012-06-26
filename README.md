@@ -44,17 +44,13 @@ Salesforce Canvas is a mashup framework for consuming third party applications w
 
     https:/localhost:8443
     
-### How to run Connect on Heroku (Future)
-
-      https://salesforcecanvas.herokuapp.com/canvas.html 
-
 ### Canvas Demo URLs
 
-    https://salesforcecanvas.herokuapp.com/examples/hello-world/index.html
+    https://platform-canvas-dev.herokuapp.com/examples/hello-world/index.jsp
     
 ### Canvas Callback URLs
     
-    https://salesforcecanvas.herokuapp.com/sdk/callback.html
+    https://platform-canvas-dev.herokuapp.com/sdk/callback.html
 
 
 ### How to push new changes to heroku
