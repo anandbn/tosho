@@ -18,7 +18,7 @@
     <title>Chatter Talk Example</title>
     <link rel="stylesheet" type="text/css" href="/examples/chatter-talk/talk.css" />
 
-    <script type="text/javascript" src="/sdk/js/connect.js"></script>
+    <script type="text/javascript" src="/sdk/js/canvas.js"></script>
     <script type="text/javascript" src="/sdk/js/xd.js"></script>
     <script type="text/javascript" src="/sdk/js/client.js"></script>
     <script type="text/javascript" src="/scripts/json2.js"></script>
@@ -54,7 +54,7 @@
             }
             var sr = JSON.parse('<%=signedRequestJson%>');
             chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
-                connect.byId('status').innerHTML = data.statusText;
+                Sfdc.canvas.byId('status').innerHTML = data.statusText;
             });
         </script>
     </section>

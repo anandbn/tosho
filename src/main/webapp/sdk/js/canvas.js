@@ -2,7 +2,7 @@
 
     "use strict";
 
-    if (global.connect) {
+    if (global.Sfdc && global.Sfdc.canvas) {
         return;
     }
 
@@ -14,7 +14,7 @@
         doc = document,
 
         // $ functions
-        // The connect global object is made available in the global scope.  The reveal to the global scope is done later.
+        // The canvas global object is made available in the global scope.  The reveal to the global scope is done later.
         $ = {
 
             // type utilities
@@ -176,7 +176,7 @@
 
                 function add( key, value ) {
 
-                    if ($.isNil(value)) {return};
+                    if ($.isNil(value)) {return;}
                     value = $.isFunction(value) ? value() : value;
                     if ($.isArray(value)) {
                         $.each( value, function(v, n) {
@@ -270,11 +270,11 @@
             },
 
             module: function(ns, decl) {
-                var parts = ns.split('.'), parent = global.connect, i, length;
+                var parts = ns.split('.'), parent = global.Sfdc.canvas, i, length;
 
                 // strip redundant leading global
-                if (parts[0] === 'connect') {
-                    parts = parts.slice(1);
+                if (parts[1] === 'canvas') {
+                    parts = parts.slice(2);
                 }
 
                 length = parts.length;
@@ -324,7 +324,7 @@
             readyHandlers = null; // release to gc
         },
 
-        connect = function (cb) {
+        canvas = function (cb) {
             if ($.isFunction(cb)) {
                 readyHandlers.push(cb);
             }
@@ -370,10 +370,13 @@
     }());
 
     $.each($, function (fn, name) {
-        connect[name] = fn;
+    	canvas[name] = fn;
     });
 
-    global.connect = connect;
+    if (!global.Sfdc) { 
+        global.Sfdc = {};
+    }
+    global.Sfdc.canvas = canvas;
 
 
 }(this));

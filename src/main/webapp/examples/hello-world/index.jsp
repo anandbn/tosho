@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />
 
-    <script type="text/javascript" src="/sdk/js/connect.js"></script>
+    <script type="text/javascript" src="/sdk/js/canvas.js"></script>
 
     <!-- Third part libraries, substitute with your own -->
     <script type="text/javascript" src="/scripts/json2.js"></script>
@@ -31,9 +31,9 @@
             alert("This canvas app must be included within an iframe");
         }
 
-        connect(function() {
+        Sfdc.canvas(function() {
             var sr = JSON.parse('<%=signedRequestJson%>');
-            connect.byId('username').innerHTML = sr.context.user.fullName;
+            Sfdc.canvas.byId('username').innerHTML = sr.context.user.fullName;
         });
 
     </script>

@@ -1,4 +1,4 @@
-// connect.oauth
+// Sfdc.canvas.oauth
 (function ($$) {
 
     "use strict";
@@ -114,7 +114,7 @@
             // such window in fact he is not closing child. (However "onUnload" event is raised!)
             //checkChildWindowStatus();
             parseHash(hash);
-            setTimeout(window.connect.oauth.checkChildWindowStatus, 50);
+            setTimeout(window.Sfdc.canvas.oauth.checkChildWindowStatus, 50);
         }
 
         function logout() {
@@ -158,6 +158,6 @@
          };
     }());
 
-    $$.module('connect.oauth', module);
+    $$.module('Sfdc.canvas.oauth', module);
 
-}(connect));
+}(Sfdc.canvas));

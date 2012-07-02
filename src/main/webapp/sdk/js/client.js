@@ -1,4 +1,4 @@
-// connect.client
+// Sfdc.canvas.client
 (function ($$) {
 
     "use strict";
@@ -42,7 +42,7 @@
             // limit the sequencers to 100 avoid out of memory errors
             seq = (seq > 100) ? 0 : seq + 1;
             cbs[seq] = clientscb;
-            var wrapped = {seq : seq, body : message}
+            var wrapped = {seq : seq, body : message};
             $$.xd.post(wrapped, getParentUrl(), parent);
         }
 
@@ -64,10 +64,10 @@
                 };
 
             if (!url) {
-                throw {name : "illegalArgumentException" , message : "url required"}
+                throw {name : "illegalArgumentException" , message : "url required"};
             }
             if (!settings || !$$.isFunction(settings.success)) {
-                throw {name : "illegalArgumentException" , message : "setting.success missing."}
+                throw {name : "illegalArgumentException" , message : "setting.success missing."};
             }
 
             var ccb = settings.success;
@@ -87,6 +87,6 @@
     }());
 
 
-    $$.module('connect.client', module);
+    $$.module('Sfdc.canvas.client', module);
 
-}(connect));
+}(Sfdc.canvas));

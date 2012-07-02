@@ -1,4 +1,4 @@
-// connect.parent
+// Sfdc.canvas.parent
 (function ($$) {
 
     "use strict";
@@ -12,7 +12,7 @@
                 return null;
             }
             // Strip any path or query strings.
-            return url.replace( /([^:]+:\/\/[^\/^\?]+).*/, '$1');
+            return url.replace( /([^:]+:\/\/[^\/]+).*/, '$1');
         }
 
         function getFrame() {
@@ -34,7 +34,7 @@
                     obj.status = xmlHttp.status;
                     obj.statusText = xmlHttp.statusText;
                     obj.responseHeaders = xmlHttp.getAllResponseHeaders();
-                    $$.xd.post(obj, getDomain(url), getFrame())
+                    $$.xd.post(obj, getDomain(url), getFrame());
                 };
 
                 if (type === 'ctx') {
@@ -109,7 +109,7 @@
             tmpFrame.style.scrolling = options && options.scrolling || 'no';
 
             // Remove all child elements from the last time we rendered a canvas app
-            while ( parent.firstChild ) parent.removeChild( parent.firstChild );
+            while ( parent.firstChild ) {parent.removeChild( parent.firstChild );}
             parent.appendChild(tmpForm);
             parent.appendChild(tmpFrame);
             document.forms["canvas-hidden-form"].submit();
@@ -127,7 +127,7 @@
             tmpFrame.style.scrolling = options && options.scrolling || 'no';
 
             // Remove all child elements from the last time we rendered a canvas app
-            while ( parent.firstChild ) parent.removeChild( parent.firstChild );
+            while ( parent.firstChild ) {parent.removeChild( parent.firstChild );}
 
             frameObj = parent.appendChild(tmpFrame);
             if (frameObj.contentDocument) {
@@ -144,7 +144,7 @@
             var id, uid, q, parentUrl, loginUrl;
 
             if ($$.isNil(container) || $$.isNil(container.app) || $$.isNil(container.app.canvasUrl) || $$.isNil(container.app.id)) {
-                throw {name : "illegalArgumentException" , message : "App or App's contents missing."}
+                throw {name : "illegalArgumentException" , message : "App or App's contents missing."};
             }
 
             url = decodeURIComponent(container.app.canvasUrl);
@@ -177,6 +177,6 @@
         };
     }());
 
-    $$.module('connect.parent', module);
+    $$.module('Sfdc.canvas.parent', module);
 
-}(connect));
+}(Sfdc.canvas));

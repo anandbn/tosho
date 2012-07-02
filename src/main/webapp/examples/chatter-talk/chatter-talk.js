@@ -36,4 +36,4 @@ if (!chatterTalk) {
             });
     };
 
-}(connect));
+}(Sfdc.canvas));

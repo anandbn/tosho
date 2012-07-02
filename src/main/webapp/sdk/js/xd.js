@@ -1,4 +1,4 @@
-// connect.xd
+// Sfdc.canvas.xd
 // concept lifted from Josh Fraser - http://www.onlineaspect.com/2010/01/15/backwards-compatible-postmessage
 (function ($$, window) {
 
@@ -21,10 +21,10 @@
                 // set appropriately, based on the target_url parameter.
 
                 // strip  out just the {scheme}://{host}:{port} - remove any path and query string information
-                target.postMessage(message, target_url.replace( /([^:]+:\/\/[^\/^\?]+).*/, '$1'));
+                target.postMessage(message, target_url.replace( /([^:]+:\/\/[^\/]+).*/, '$1'));
             } else if (target_url) {
                 // the browser does not support window.postMessage, so use the window.location.hash fragment hack
-                target.location = target_url.replace(/#.*$/, '') + '#' + (+new Date) + (cacheBust++) + '&' + message;
+                target.location = target_url.replace(/#.*$/, '') + '#' + (+new Date()) + (cacheBust++) + '&' + message;
             }
         }
 
@@ -49,7 +49,7 @@
                 }
             } else {
                 // a polling loop is started & callback is called whenever the location.hash changes
-                intervalId && clearInterval(intervalId);
+                if (intervalId) {clearInterval(intervalId);}
                 intervalId = null;
                 if (callback) {
                     intervalId = setInterval(function() {
@@ -75,7 +75,7 @@
                 }
             } else {
                 // a polling loop is started & callback is called whenever the location.hash changes
-                intervalId && clearInterval(intervalId);
+                if (intervalId) {clearInterval(intervalId);}
                 intervalId = null;
             }
         }
@@ -87,6 +87,6 @@
         };
     }());
 
-    $$.module('connect.xd', module);
+    $$.module('Sfdc.canvas.xd', module);
 
-}(connect, this));
+}(Sfdc.canvas, this));

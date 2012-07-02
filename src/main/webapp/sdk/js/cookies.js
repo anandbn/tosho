@@ -1,4 +1,4 @@
-// connect.cookies
+// Sfdc.canvas.cookies
 (function ($$) {
 
     "use strict";
@@ -49,6 +49,6 @@
     }());
 
 
-    $$.module('connect.cookies', module);
+    $$.module('Sfdc.canvas.cookies', module);
 
-}(connect));
+}(Sfdc.canvas));
