@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="/examples/chatter-talk/talk.css" />
 
     <script type="text/javascript" src="/sdk/js/canvas.js"></script>
+    <script type="text/javascript" src="/sdk/js/cookie.js"></script>
+    <script type="text/javascript" src="/sdk/js/oauth.js"></script>
     <script type="text/javascript" src="/sdk/js/xd.js"></script>
     <script type="text/javascript" src="/sdk/js/client.js"></script>
     <script type="text/javascript" src="/scripts/json2.js"></script>
