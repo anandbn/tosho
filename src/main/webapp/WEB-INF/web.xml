@@ -3,99 +3,10 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Connect UI</display-name>
+    <display-name>Canvas SDK</display-name>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>index.json</welcome-file>
     </welcome-file-list>
-
-
-    <!--<servlet>-->
-        <!--<servlet-name>OAuthServlet</servlet-name>-->
-        <!--<servlet-class>org.canvasrvlet.OAuthServlet</servlet-class>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-        <!--&lt;!&ndash;clientId is 'Consumer Key' in the Remote Access UI&ndash;&gt;-->
-        <!--<init-param>-->
-            <!--<param-name>clientId</param-name>-->
-            <!--<param-value>3MVG9QDx8IX8nP5QYEJ48pkpxlzvIvsxmQrPlfLa7pXfvLS5w.Qq60K.Qpu_DRaJ7XmAbTrH6azkh.pGB1l6A</param-value>-->
-        <!--</init-param>-->
-        <!--&lt;!&ndash;clientSecret is 'Consumer Secret' in the Remote Access UI&ndash;&gt;-->
-        <!--<init-param>-->
-            <!--<param-name>clientSecret</param-name>-->
-            <!--<param-value>4960486608388807153</param-value>-->
-        <!--</init-param>-->
-        <!--&lt;!&ndash;This must be identical to 'Callback URL' in the Remote Access UI&ndash;&gt;-->
-        <!--<init-param>-->
-            <!--<param-name>redirectUri</param-name>-->
-            <!--&lt;!&ndash;<param-value>https://canvas.heroku.com/oauth/_callback</param-value>&ndash;&gt;-->
-            <!--<param-value>https://localhost:8443/oauth/_callback</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>environment</param-name>-->
-            <!--<param-value>https://login.salesforce.com</param-value>-->
-        <!--</init-param>-->
-    <!--</servlet>-->
-    <!--<servlet>-->
-        <!--<servlet-name>RestServlet</servlet-name>-->
-        <!--<servlet-class>org.canvasrvlet.ProxyServlet</servlet-class>-->
-        <!--<load-on-startup>2</load-on-startup>-->
-        <!--<init-param>-->
-            <!--<param-name>remote_host</param-name>-->
-            <!--<param-value>https://na12.salesforce.com</param-value>-->
-        <!--</init-param>-->
-    <!--</servlet>-->
-    <servlet>
-        <servlet-name>CometdServlet</servlet-name>
-        <servlet-class>org.canvas.servlet.ProxyServlet</servlet-class>
-        <load-on-startup>2</load-on-startup>
-        <init-param>
-            <param-name>remote_host</param-name>
-            <!--<param-value>https://c.na9.visual.force.com</param-value>-->
-            <!--<param-value>http://cjolley-wsl.internal.salesforce.com:8080</param-value>-->
-            <param-value>https://na9.salesforce.com</param-value>
-        </init-param>
-    </servlet>
-    <!--<servlet>-->
-        <!--<servlet-name>VisualforceServlet</servlet-name>-->
-        <!--<servlet-class>org.canvasrvlet.ProxyServlet</servlet-class>-->
-        <!--<load-on-startup>3</load-on-startup>-->
-        <!--<init-param>-->
-            <!--<param-name>remote_host</param-name>-->
-            <!--<param-value>https://c.na12.visual.force.com</param-value>-->
-        <!--</init-param>-->
-    <!--</servlet>-->
-    <servlet>
-        <servlet-name>Jersey Web Application</servlet-name>
-        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-        <load-on-startup>1</load-on-startup>
-        <init-param>
-            <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>org.canvas.rest.hello;org.concanvasst.security;org.conneccanvasmashup.resource</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Jersey Web Application</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>OAuthServlet</servlet-name>-->
-        <!--<url-pattern>/oauth</url-pattern>-->
-        <!--<url-pattern>/oauth/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>RestServlet</servlet-name>-->
-        <!--<url-pattern>/servicesx/data/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>VisualforceServlet</servlet-name>-->
-        <!--<url-pattern>/apex/*</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <servlet-mapping>
-        <servlet-name>CometdServlet</servlet-name>
-        <url-pattern>/cometd/*</url-pattern>
-    </servlet-mapping>
-
 </web-app>
