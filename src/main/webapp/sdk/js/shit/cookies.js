@@ -1,27 +1,10 @@
-/**
-*@namespace Sfdc.canvas.cookies
-*@name Sfdc.canvas.cookies
-*/
+// Sfdc.canvas.cookies
 (function ($$) {
 
     "use strict";
 
     var module =  (function() {
 
-        function isSecure()
-        {
-            return window.location.protocol == 'https:';
-        }
-
-        /**
-       * @name Sfdc.canvas.cookies#set
-       * @function
-       * @description Create a cookie
-       * @param {String} name Cookie name
-       * @param {String} value Cookie value
-       * @param {Integer} [days] Number of days for the cookie to remain active.
-                If not provided, the cookie never expires
-       */
        function set(name, value, days) {
            var expires = "", date;
            if (days) {
@@ -32,16 +15,9 @@
            else {
                expires = "";
            }
-           document.cookie = name + "=" + value + expires + "; path=/" +  ((isSecure() === true) ? "; secure" : "");
+           document.cookie = name + "=" + value + expires + "; path=/";
        }
-       
-       /**
-       * @name Sfdc.canvas.cookies#get
-       * @function
-       * @description Get the cookie with the specified name
-       * @param {String} name The name of the cookie to retrieve
-       * @returns The value of the cookie if the name is found, otherwise null
-       */
+
        function get(name) {
            var nameEQ, ca, c, i;
 
@@ -60,13 +36,7 @@
            }
            return null;
        }
-       
-       /**
-       * @name Sfdc.canvas.cookies#remove
-       * @function
-       * @description Remove the specified cookie by setting the expiry date to one day ago
-       * @param {String} name The name of the cookie to remove.
-       */
+
        function remove(name) {
            set(name, "", -1);
        }

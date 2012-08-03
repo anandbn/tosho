@@ -1,8 +1,4 @@
-
-/**
-*@namespace Sfdc.canvas.oauth
-*@name Sfdc.canvas.oauth
-*/
+// Sfdc.canvas.oauth
 (function ($$) {
 
     "use strict";
@@ -26,38 +22,7 @@
             }
             return '';
         }
-        /**
-        *@private
-        */
-        function refresh() {
-            self.location.reload();
-        }
-        /** 
-        * @name Sfdc.canvas.oauth#login
-        * @function
-        * @description Opens the OAuth popup window to retrieve an OAuth token
-        * @param {Object} ctx  Context object that contains the url, the response type, the client id and callback url
-        * @docneedsimprovement
-        * @example
-        * function clickHandler(e)
-        * {
-        *  var uri;
-        *  if (! connect.oauth.loggedin())
-        *  {
-        *   uri = connect.oauth.loginUrl();
-        *   connect.oauth.login(
-        *    {uri : uri,
-        *     params: {
-        *      response_type : "token",
-        *      client_id :  "<%=consumerKey%>",
-        *      redirect_uri : encodeURIComponent("/sdk/callback.html")
-        *      }});
-        *  } else {
-        *     connect.oauth.logout();
-        *  }
-        *  return false;
-        * }
-        */
+
         function login(ctx) {
             var uri;
 
@@ -70,17 +35,10 @@
             childWindow = window.open(uri, 'OAuth', 'status=0,toolbar=0,menubar=0,resizable=0,scrollbars=1,top=50,left=50,height=500,width=680');
         }
 
-        /**
-        * @name Sfdc.canvas.oauth#token
-        * @function
-        * @description Sets, gets or removes the <code>access_token</code> cookie <br>
-            <p>This function does one of three things <br>
-            If the 't' parameter is not passed in, the current value for the <code>access_token</code> cookie is returned. <br>
-            If the the 't' parameter is null, the <code>access_token</code> cookie is removed. <br>
-            Otherwise the <code>access_token</code> cookie value is set to the 't' parameter and then returned.
-        * @param {String} [t] The oauth token to set as the <code>access_token</code> cookie
-        * @returns {String} The resulting <code>access_token</code> cookie value if set, otherwise null
-        */
+        function refresh() {
+            self.location.reload();
+        }
+
         function token(t) {
             if (arguments.length === 0) {
                 if (!$$.isNil(accessToken)) {return accessToken;}
@@ -94,24 +52,9 @@
                 $$.cookies.set("access_token", t);
                 accessToken = t;
             }
-
-            if (accessToken) {
-                $$.client.token(accessToken);
-            }
             return accessToken;
         }
 
-        /**
-        * @name Sfdc.canvas.oauth#instance
-        * @function
-        * @description Sets, gets or removes the <code>instance_url</code> cookie <br>
-            <p> This function does one of three things <br>
-            If the 'i' parameter is not passed in, the current value for the <code>instance_url</code> cookie is returned. <br>
-            If the 'i' parameter is null, the <code>instance_url</code> cookie is removed. <br>
-            Otherwise the <code>instance_url</code> cookie value is set to the 'i' parameter and then returned.
-        * @param {String} [i] The value to set as the <code>instance_url</code> cookie
-        * @returns {String} The resulting <code>instance_url</code> cookie value if set, otherwise null
-        */
         function instance(i) {
             if (arguments.length === 0) {
                 if (!$$.isNil(instanceUrl)) {return instanceUrl;}
@@ -128,9 +71,6 @@
             return instanceUrl;
         }
 
-        /**
-        *@private
-        */
         // Example Results of tha hash....
         // Name [access_token] Value [00DU0000000Xthw!ARUAQMdYg9ScuUXB5zPLpVyfYQr9qXFO7RPbKf5HyU6kAmbeKlO3jJ93gETlJxvpUDsz3mqMRL51N1E.eYFykHpoda8dPg_z]
         // Name [instance_url] Value [https://na12.salesforce.com]
@@ -160,29 +100,13 @@
                 }
             }
         }
-        
-        /**
-        * @name Sfdc.canvas.oauth#checkChildWindowStatus
-        * @function
-        * @description Refreshes the parent window only if the child window is closed.
-        */
+
         function checkChildWindowStatus() {
             if (!childWindow || childWindow.closed) {
                 refresh();
             }
         }
 
-        /**
-        * @name Sfdc.canvas.oauth#childWindowUnloadNotification
-        * @function
-        * @description Parses the hash value that is passed in and sets the 
-            <code>access_token</code> and <code>instance_url</code> cookies if they exist.  Use during 
-            User-Agent OAuth Authentication Flow to pass the OAuth token
-        * @param {String} hash Typically a string of key-value pairs delimited by 
-            the ampersand character.  
-        * @example 
-        * Sfdc.canvas.oauth.childWindowUnloadNotification(self.location.hash);
-        */
         function childWindowUnloadNotification(hash) {
             // Here we get notification from child window. Here we can decide if such notification is
             // raised because user closed child window, or because user is playing with F5 key.
@@ -192,36 +116,18 @@
             parseHash(hash);
             setTimeout(window.Sfdc.canvas.oauth.checkChildWindowStatus, 50);
         }
-        
-        /**
-        * @name Sfdc.canvas.oauth#logout
-        * @function
-        * @description Removes the <code>access_token</code> cookie and refreshes the browser.
-        */
+
         function logout() {
             // Remove the cookie and refresh the browser
             token(null);
             var home = $$.cookies.get("home");
             window.location = home || window.location;
         }
-        
-        /**
-        * @name Sfdc.canvas.oauth#loggedin
-        * @function
-        * @description Returns the login state
-        * @returns {Boolean} <code>true</code> if the <code>access_token</code> cookie is set, otherwise <code>false</code> 
-        */
+
         function loggedin() {
             return !$$.isNil(token());
         }
-        
-        /**
-        * @name Sfdc.canvas.oauth#loginUrl
-        * @function
-        * @description Calculates and returns the url for the OAuth authorization service
-        * @returns {String} The url for the OAuth authorization service or null if there is 
-            not a value for loginUrl in the current url's query string.
-        */
+
         function loginUrl() {
             var i, nvs, nv, q = self.location.search;
 

@@ -1,28 +1,16 @@
-
+// Sfdc.canvas.xd
 // concept lifted from Josh Fraser - http://www.onlineaspect.com/2010/01/15/backwards-compatible-postmessage
-/**
-*@namespace Sfdc.canvas.xd
-*@name Sfdc.canvas.xd
-*/
 (function ($$, window) {
 
     "use strict";
 
     var module =   (function() {
 
-        var internalCallback;
-        /**
-        * @lends Sfdc.canvas.xd
-        */
-        
-        /**
-        * @name Sfdc.canvas.xd#post
-        * @function
-        * @description Pass a message to the target url
-        * @param {String} message The message to send
-        * @param {String} target_url Specifies what the origin of the target must be for the event to be dispatched.
-        * @param {String} [target] The window that is the message's target. Defaults to the parent of the current window.
-        */
+        var intervalId,
+            lastHash,
+            cacheBust = 1,
+            internalCallback;
+
         function postMessage(message, target_url, target) {
             if (!target_url) {
                 return;
@@ -34,19 +22,15 @@
 
                 // strip  out just the {scheme}://{host}:{port} - remove any path and query string information
                 target.postMessage(message, target_url.replace( /([^:]+:\/\/[^\/]+).*/, '$1'));
+            } else if (target_url) {
+                // the browser does not support window.postMessage, so use the window.location.hash fragment hack
+                target.location = target_url.replace(/#.*$/, '') + '#' + (+new Date()) + (cacheBust++) + '&' + message;
             }
         }
-        
-        /**
-        * @name Sfdc.canvas.xd#receive
-        * @function Runs the callback function when the message event is received.
-        * @param {Function} callback Function to run when the message event is received 
-            if the event origin is acceptable.
-        * @param {String} source_origin The origin of the desired events
-        */
+
         function receiveMessage(callback, source_origin) {
 
-            // browser supports window.postMessage (if not not supported for pilot - removed per securities request)
+            // browser supports window.postMessage
             if (window.postMessage) {
                 // bind the callback to the actual event associated with window.postMessage
                 if (callback) {
@@ -63,15 +47,23 @@
                 } else {
                     window.attachEvent('onmessage', internalCallback);
                 }
+            } else {
+                // a polling loop is started & callback is called whenever the location.hash changes
+                if (intervalId) {clearInterval(intervalId);}
+                intervalId = null;
+                if (callback) {
+                    intervalId = setInterval(function() {
+                        var hash = document.location.hash,
+                            re = /^#?\d+&/;
+                        if (hash !== lastHash && re.test(hash)) {
+                            lastHash = hash;
+                            callback({data: hash.replace(re, '')});
+                        }
+                    }, 100);
+                }
             }
         }
-        
-        /**
-        * @name Sfdc.canvas.xd#remove
-        * @function
-        * @description Removes the message event listener
-        * @public     
-        */
+
         function removeListener() {
 
             // browser supports window.postMessage
@@ -81,6 +73,10 @@
                 } else {
                     window.detachEvent('onmessage', internalCallback);
                 }
+            } else {
+                // a polling loop is started & callback is called whenever the location.hash changes
+                if (intervalId) {clearInterval(intervalId);}
+                intervalId = null;
             }
         }
 
