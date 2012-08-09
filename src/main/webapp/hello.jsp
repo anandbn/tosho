@@ -1,4 +1,4 @@
-<%@ page import="platform.connect.api.SignedRequest" %>
+<%@ page import="canvas.SignedRequest" %>
 <%@ page import="java.util.Map" %>
 <%
     // Pull the signed request out of the request body and unsign it.
@@ -20,13 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />
 
-    <script type="text/javascript" src="/sdk/js/canvas.js"></script>
-    <script type="text/javascript" src="/sdk/js/cookies.js"></script>
-    <script type="text/javascript" src="/sdk/js/oauth.js"></script>
-    <script type="text/javascript" src="/sdk/js/xd.js"></script>
-    <script type="text/javascript" src="/sdk/js/client.js"></script>
-
-    <!-- Third part libraries, substitute with your own -->
+    <script type="text/javascript" src="/sdk/js/canvas-all.js"></script>
     <script type="text/javascript" src="/scripts/json2.js"></script>
 
     <script>

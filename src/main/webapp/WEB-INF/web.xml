@@ -3,10 +3,9 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Canvas SDK</display-name>
+    <display-name>Heroku Quick Start Template</display-name>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

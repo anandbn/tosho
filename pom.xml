@@ -5,16 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <version>1.0-SNAPSHOT</version>
-    <name>Salesforce Canvas</name>
-    <artifactId>salesforce-canvas</artifactId>
-<!--    <packaging>jar</packaging> -->
+    <name>Salesforce Canvas Hello World</name>
+    <artifactId>sfdc-canvas-hello-world</artifactId>
 
     <properties>
         <java.version>1.6</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- jslint -->
-        <jslint.maven.plugin.version>2.0.2</jslint.maven.plugin.version>
-        <jslint.source.dir>src/main/webapp/script</jslint.source.dir>
     </properties>
 
     <dependencies>
@@ -42,30 +38,11 @@
             <version>7.4.5.v20110725</version>
         </dependency>
 
-        <!-- Jersey - REST Resources -->
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-bundle</artifactId>
-            <version>1.8</version>
-            <!-- need to exclude this version of asm and include a more modern one otherwise get method not founds -->
-            <exclusions>
-                <exclusion>
-                  <groupId>asm</groupId>
-                  <artifactId>asm</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
           <groupId>asm</groupId>
           <artifactId>asm</artifactId>
           <version>3.2</version>
         </dependency>
-        <!-- If you want to add jackson -->
-        <!--<dependency>-->
-            <!--<groupId>com.sun.jersey</groupId>-->
-            <!--<artifactId>jersey-json</artifactId>-->
-            <!--<version>1.8</version>-->
-        <!--</dependency>-->
 
         <!-- Need this for some of the JSON parsing in OAuthServlet -->
         <dependency>
@@ -131,44 +108,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- jslint -->
-            <!--<plugin>-->
-                <!--<groupId>com.googlecode.jslint4java</groupId>-->
-                <!--<artifactId>jslint4java-maven-plugin</artifactId>-->
-                <!--<version>${jslint.maven.plugin.version}</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>lint</id>-->
-                        <!--<phase>test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>lint</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash;<failOnError>true</failOnError>&ndash;&gt;-->
-                            <!--<excludes>-->
-                                <!--<exclude>jquery.min.js</exclude>-->
-                                <!--<exclude>jquery-ui.min.js</exclude>-->
-                                <!--<exclude>json2.js</exclude>-->
-                                <!--<exclude>pmrpc.js</exclude>-->
-                            <!--</excludes>-->
-                            <!--<options>-->
-                                <!--<predef>top, self,console,jQuery</predef>-->
-                                <!--<undef>true</undef>-->
-                                <!--<forin>true</forin>-->
-                                <!--<white>true</white>-->
-                                <!--<browser>true</browser>-->
-                                <!--<devel>true</devel>-->
-                                <!--<passfail>true</passfail>-->
-                            <!--</options>-->
-                            <!--<sourceFolders>-->
-                                <!--<sourceFolder>${basedir}/src/main/webapp/script</sourceFolder>-->
-                                <!--<sourceFolder>${basedir}/src/main/webapp/mashlet</sourceFolder>-->
-                            <!--</sourceFolders>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>
