@@ -43,7 +43,7 @@ import java.util.HashMap;
 
 /**
  *
- * The utility method can be used to un-sign the signed request. The request needs un-signing such that 
+ * The utility class can be used to un-sign the signed request. The request needs un-signing such that 
  * it can be verified that it is from Salesforce and that the request has not been tampered with.
  * <p>
  * This utility class has two method. One un-signs the request as a Java object the other as a JSON String.
@@ -123,6 +123,10 @@ public class SignedRequest {
     private static void verify(String secret, String algorithm, String encodedEnvelope, String encodedSig )
         throws SecurityException
     {
+       if (secret == null) {
+           throw new IllegalArgumentException("secret is null, did you set your environment variable CANVAS_CONSUMER_SECRET?");
+       }
+
         SecretKey hmacKey = null;
         try {
             byte[] key = secret.getBytes();
