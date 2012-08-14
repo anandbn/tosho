@@ -77,10 +77,10 @@
 
         <div id="footercont">
             <div id="footerleft">
-                <p>Powered By: <a href="#" onclick="window.top.location.href='http://www.heroku.com'"><strong>Heroku</strong></a></p>
+                <p>Powered By: <a title="Heroku" href="#" onclick="window.top.location.href='http://www.heroku.com'"><strong>Heroku</strong></a></p>
             </div>
             <div id="footerright">
-                <p>Salesforce: <a title="Fafe Harbor" href="http://www.salesforce.com/company/investor/safe_harbor.jsp"><strong>SafeHarbor</strong></a></p>
+                <p>Salesforce: <a title="Safe Harbor" href="http://www.salesforce.com/company/investor/safe_harbor.jsp"><strong>SafeHarbor</strong></a></p>
             </div>
         </div>    </div>
 
