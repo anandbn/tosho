@@ -20,6 +20,7 @@
 
         <script type="text/javascript" src="/sdk/js/canvas-all.js"></script>
         <script type="text/javascript" src="/scripts/json2.js"></script>
+        <script type="text/javascript" src="/scripts/chatter-talk.js"></script>
 
         <script>
             if (self === top) {
@@ -38,6 +39,10 @@
                 Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
                 Sfdc.canvas.byId('email').innerHTML = sr.context.user.email;
                 Sfdc.canvas.byId('company').innerHTML = sr.context.organization.name;
+
+                chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
+                    Sfdc.canvas.byId('status').innerHTML = data.statusText;
+                });
             });
 
         </script>
@@ -71,7 +76,16 @@
                         </tr>
                     </table>
                 </div>
-
+                <div id="canvas-chatter">
+                    <table border="0" width="100%">
+                        <tr>
+                            <td width="15%"><b>Post to Chatter:&nbsp</b></td>
+                            <td width="65%"><input id="speech-input-field" type="text" x-webkit-speech/></td>
+                            <td width="6%"><button id="chatter-submit" type="submit"/></td>
+                            <td width="10%"><span id="status" style="color:green"></span></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 

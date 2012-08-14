@@ -1,8 +1,4 @@
-In order to make our licensing terms clear to other developers, create a LICENSE.txt file in the root of your project tree.
 
-Our policy is to release all open source code using the BSD 3-clause license.
-
-Here is a Salesforce branded version of the BSD 3-clause license that you can paste into your license file:
 
 Copyright (c) 2012, Salesforce.com, Inc.
 All rights reserved.

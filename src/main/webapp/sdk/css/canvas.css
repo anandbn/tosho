@@ -114,6 +114,28 @@ a:hover {
     font-size: 13px
 }
 
+#canvas-chatter {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding-top: 0
+}
+
+#speech-input-field {
+    width: 400px;
+    height: 14px;
+    padding: 6px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: 0;
+}
+
+button {
+    clear: both;
+    width: 48px;
+    height:24px;
+    background: #666666 url(/images/share.png) no-repeat;
+}
+
 #footercont
 {
     float: left;
