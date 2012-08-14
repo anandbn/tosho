@@ -32,7 +32,7 @@
                 // Save the token
                 Sfdc.canvas.oauth.token(sr.oauthToken);
                 Sfdc.canvas.byId('username').innerHTML = sr.context.user.fullName;
-                Sfdc.canvas.byId('profile').src = sr.context.user.profilePhotoUrl + "?oauth_token=" + sr.oauthToken;
+                Sfdc.canvas.byId('profile').src = sr.instance + sr.context.user.profileThumbnailUrl + "?oauth_token=" + sr.oauthToken;
             });
 
         </script>
