@@ -4,9 +4,9 @@ body {
     margin-top: 0;
     padding: 10px;
     background-color: #FFFFFF;
-    font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
-    font-size: 13px;
-    color: #333
+    font-family: "Arial", "Helvetica", "sans-serif";
+    font-size: 75%;
+    color: #222222
 }
 
 h1 {
@@ -15,18 +15,18 @@ h1 {
 }
 
 a {
-    color: #03c
+    color: #015BA7
 }
 
 a:hover {
-    background-color: #03c;
+    background-color: #015BA7;
     color: white;
     text-decoration: none
 }
 
 #page {
     background-color: #FFFFFF;
-    width: 300px;
+    width: 800px;
     margin: 0;
     margin-left: 0;
     margin-right: 0
@@ -37,7 +37,7 @@ a:hover {
     background-color: white;
     border: 3px solid #aaa;
     padding: 25px;
-    width: 500px
+    width: 700px
 }
 
 #footer {
@@ -56,7 +56,7 @@ a:hover {
 }
 
 #header {
-    background-image: url("/images/salesforce.png");
+    background-image: url("/images/java.png");
     background-repeat: no-repeat;
     background-position: top left;
     height: 64px
@@ -114,26 +114,43 @@ a:hover {
     font-size: 13px
 }
 
-#sidebar ul {
-    margin-left: 0;
-    padding-left: 0
+#footercont
+{
+    float: left;
+    width: 700px;
+    height: 50px;
+    color: #999;
 }
 
-#sidebar ul h3 {
-    margin-top: 25px;
-    font-size: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc
+#footercont p
+{
+    margin: 0;
+    padding: 15px;
 }
 
-#sidebar li {
-    list-style-type: none
+#footercont a
+{
+    color: #999;
+    text-decoration: none;
 }
 
-#sidebar ul.links li {
-    margin-bottom: 5px
+#footercont a:hover
+{
+    color: #199BD2;
+    text-decoration: none;
 }
 
-.filename {
-    font-style: italic
+#footerleft
+{
+    float: left;
+    width: 400px;
+    height: 50px;
+}
+
+#footerright
+{
+    float: left;
+    width: 300px;
+    height: 50px;
+    text-align: right;
 }

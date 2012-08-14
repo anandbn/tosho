@@ -31,8 +31,13 @@
                 var sr = JSON.parse('<%=signedRequestJson%>');
                 // Save the token
                 Sfdc.canvas.oauth.token(sr.oauthToken);
-                Sfdc.canvas.byId('username').innerHTML = sr.context.user.fullName;
-                Sfdc.canvas.byId('profile').src = sr.instanceUrl + sr.context.user.profileThumbnailUrl + "?oauth_token=" + sr.oauthToken;
+                Sfdc.canvas.byId('fullname').innerHTML = sr.context.user.fullName;
+                Sfdc.canvas.byId('profile').src = sr.instanceUrl + sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.oauthToken;
+                Sfdc.canvas.byId('firstname').innerHTML = sr.context.user.firstName;
+                Sfdc.canvas.byId('lastname').innerHTML = sr.context.user.lastName;
+                Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
+                Sfdc.canvas.byId('email').innerHTML = sr.context.user.email;
+                Sfdc.canvas.byId('company').innerHTML = sr.context.organization.name;
             });
 
         </script>
@@ -41,7 +46,7 @@
     <div id="page">
         <div id="content">
             <div id="header">
-                <h1 >Hello <span id='username'></span>!</h1>
+                <h1 >Hello <span id='fullname'></span>!</h1>
                 <h2>Welcome to the Hello World Java example!</h2>
             </div>
 
@@ -51,16 +56,18 @@
                 <div id="canvas-request">
                     <table border="0" width="100%">
                         <tr>
-                            <td><b>First Name: </b>Max</td>
-                            <td><b>Last Name: </b>Power</td>
+                            <td></td>
+                            <td><b>First Name: </b><span id='firstname'></span></td>
+                            <td><b>Last Name: </b><span id='lastname'></span></td>
+                        </tr>
+                        <tr>
                             <td><img id='profile' border="0" src="" /></td>
+                            <td><b>Username: </b><span id='username'></span></td>
+                            <td colspan="2"><b>Email Address: </b><span id='email'></span></td>
                         </tr>
                         <tr>
-                            <td><b>Username: </b>mpower@connect.org</td>
-                            <td colspan="2"><b>Email Address: </b>spepper@salesforce.com</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3"><b>Company: </b>connect.org</td>
+                            <td></td>
+                            <td colspan="3"><b>Company: </b><span id='company'></span></td>
                         </tr>
                     </table>
                 </div>
@@ -68,8 +75,14 @@
             </div>
         </div>
 
-        <div id="footer">&nbsp;</div>
-    </div>
+        <div id="footercont">
+            <div id="footerleft">
+                <p>Powered By: <a href="#" onclick="window.top.location.href='http://www.heroku.com'"><strong>Heroku</strong></a></p>
+            </div>
+            <div id="footerright">
+                <p>Salesforce: <a title="Fafe Harbor" href="http://www.salesforce.com/company/investor/safe_harbor.jsp"><strong>SafeHarbor</strong></a></p>
+            </div>
+        </div>    </div>
 
     </body>
  </html>
