@@ -11,35 +11,65 @@
     String yourConsumerSecret=System.getenv("CANVAS_CONSUMER_SECRET");
     String signedRequestJson = SignedRequest.unsignAsJson(signedRequest[0], yourConsumerSecret);
 %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World Canvas Example</title>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
+        <link rel="stylesheet" type="text/css" href="/sdk/css/canvas.css" />
 
-    <title>Hello World Canvas Example</title>
+        <script type="text/javascript" src="/sdk/js/canvas-all.js"></script>
+        <script type="text/javascript" src="/scripts/json2.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/sdk/css/connect.css" />
+        <script>
+            if (self === top) {
+                // Not in Iframe
+                alert("This canvas app must be included within an iframe");
+            }
 
-    <script type="text/javascript" src="/sdk/js/canvas-all.js"></script>
-    <script type="text/javascript" src="/scripts/json2.js"></script>
+            Sfdc.canvas(function() {
+                var sr = JSON.parse('<%=signedRequestJson%>');
+                // Save the token
+                Sfdc.canvas.oauth.token(sr.oauthToken);
+                Sfdc.canvas.byId('username').innerHTML = sr.context.user.fullName;
+                Sfdc.canvas.byId('profile').src = sr.context.user.profilePhotoUrl + "?oauth_token=" + sr.oauthToken;
+            });
 
-    <script>
-        if (self === top) {
-            // Not in Iframe
-            alert("This canvas app must be included within an iframe");
-        }
+        </script>
+    </head>
+    <body>
+    <div id="page">
+        <div id="content">
+            <div id="header">
+                <h1 >Hello <span id='username'></span>!</h1>
+                <h2>Welcome to the Hello World Java example!</h2>
+            </div>
 
-        Sfdc.canvas(function() {
-            var sr = JSON.parse('<%=signedRequestJson%>');
-            // Save the token 
-            Sfdc.canvas.oauth.token(sr.oauthToken);
-            Sfdc.canvas.byId('username').innerHTML = sr.context.user.fullName;
-        });
+            <div id="canvas-content">
+                <h1>Canvas Request</h1>
+                <h2>Below is some information received in the Canvas Request:</h2>
+                <div id="canvas-request">
+                    <table border="0" width="100%">
+                        <tr>
+                            <td><b>First Name: </b>Max</td>
+                            <td><b>Last Name: </b>Power</td>
+                            <td><img id='profile' border="0" src="" /></td>
+                        </tr>
+                        <tr>
+                            <td><b>Username: </b>mpower@connect.org</td>
+                            <td colspan="2"><b>Email Address: </b>spepper@salesforce.com</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><b>Company: </b>connect.org</td>
+                        </tr>
+                    </table>
+                </div>
 
-    </script>
-</head>
-<body>
-    <br/>
-    <h1>Hello <span id='username'></span></h1>
-</body>
-</html>
+            </div>
+        </div>
+
+        <div id="footer">&nbsp;</div>
+    </div>
+
+    </body>
+ </html>
