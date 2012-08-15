@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello World Canvas Example</title>
+        <title>Java Heroku Quick Start</title>
 
         <link rel="stylesheet" type="text/css" href="/sdk/css/canvas.css" />
 
@@ -52,7 +52,7 @@
         <div id="content">
             <div id="header">
                 <h1 >Hello <span id='fullname'></span>!</h1>
-                <h2>Welcome to the Hello World Java example!</h2>
+                <h2>Welcome to the Java Quick Start Template!</h2>
             </div>
 
             <div id="canvas-content">

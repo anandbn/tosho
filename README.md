@@ -41,9 +41,9 @@ Salesforce Canvas is a mashup framework for consuming third party applications w
     
 ### Canvas URL
 
-    https://localhost:8443/examples/hello-world/index.jsp
+    https://localhost:8443/canvas.jsp
     or on Heroku
-    https://<your-heroku-app>.herokuapp.com/examples/hello-world/index.jsp
+    https://<your-heroku-app>.herokuapp.com/canvas.jsp
     
 ### Canvas Callback URLs
     
