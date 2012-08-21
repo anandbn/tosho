@@ -32,8 +32,9 @@
                 var sr = JSON.parse('<%=signedRequestJson%>');
                 // Save the token
                 Sfdc.canvas.oauth.token(sr.oauthToken);
+                var photoUri = sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.oauthToken;
                 Sfdc.canvas.byId('fullname').innerHTML = sr.context.user.fullName;
-                Sfdc.canvas.byId('profile').src = sr.instanceUrl + sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.oauthToken;
+                Sfdc.canvas.byId('profile').src = (photoUri.indexOf("http")==0 ? "" :sr.instanceUrl) + photoUri;
                 Sfdc.canvas.byId('firstname').innerHTML = sr.context.user.firstName;
                 Sfdc.canvas.byId('lastname').innerHTML = sr.context.user.lastName;
                 Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
