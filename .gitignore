@@ -2,6 +2,9 @@
 *.iws
 *.ipr
 *.class
+.project
+.classpath
 keystore
 target/
+.settings/
 
