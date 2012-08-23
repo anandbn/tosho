@@ -29,7 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Java Heroku Quick Start</title>
+        <title>Canvas Java Quick Start</title>
         <link rel="stylesheet" type="text/css" href="/sdk/css/canvas.css" />
     </head>
     <body>
