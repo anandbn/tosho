@@ -56,7 +56,7 @@ a:hover {
 }
 
 #header {
-    background-image: url("/images/java.png");
+    background-image: url("/logo.png");
     background-repeat: no-repeat;
     background-position: top left;
     height: 64px

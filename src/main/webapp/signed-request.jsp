@@ -40,7 +40,7 @@ POSSIBILITY OF SUCH DAMAGE.
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Canvas Java Quick Start</title>
+        <title>Force.com Canvas Java Quick Start</title>
 
         <link rel="stylesheet" type="text/css" href="/sdk/css/canvas.css" />
 
@@ -79,7 +79,7 @@ POSSIBILITY OF SUCH DAMAGE.
         <div id="content">
             <div id="header">
                 <h1 >Hello <span id='fullname'></span>!</h1>
-                <h2>Welcome to the Java Quick Start Template!</h2>
+                <h2>Welcome to the Force.com Canvas Java Quick Start Template!</h2>
             </div>
 
             <div id="canvas-content">
