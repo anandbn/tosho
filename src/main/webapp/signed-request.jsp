@@ -43,12 +43,36 @@ POSSIBILITY OF SUCH DAMAGE.
         <title>Force.com Canvas Java Quick Start</title>
 
         <link rel="stylesheet" type="text/css" href="/sdk/css/canvas.css" />
+        <link rel="stylesheet" media="screen" href="css/bootstrap.min.css">
+        <link rel="stylesheet" media="screen" href="css/bootstrap-responsive.min.css">
 
         <script type="text/javascript" src="/sdk/js/canvas-all.js"></script>
         <script type="text/javascript" src="/scripts/json2.js"></script>
         <script type="text/javascript" src="/scripts/chatter-talk.js"></script>
+		<script type="text/javascript" src="/scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+		<script src="https://raw.github.com/jonnyreeves/jquery-Mustache/master/src/jquery-Mustache.js"></script>
+		<script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
+        
+		<style type="text/css">
+		
+		.thumbnail{
+		  width: 200px;
+		  height: 200px;
+		}
+		.thumbnail p {
+			overflow: scroll;
+		}
+		blockquote p{
+		   font-size:14px;
+		}
 
+		h5 a:hover{
+			background-color:none;
+		}
+		</style>
         <script>
+        	$.noConflict();
             if (self === top) {
                 // Not in Iframe
                 alert("This canvas app must be included within an iframe");
@@ -58,18 +82,23 @@ POSSIBILITY OF SUCH DAMAGE.
                 var sr = JSON.parse('<%=signedRequestJson%>');
                 // Save the token
                 Sfdc.canvas.oauth.token(sr.oauthToken);
-                var photoUri = sr.context.user.profileThumbnailUrl +  "?oauth_token=" + sr.oauthToken;
-                Sfdc.canvas.byId('fullname').innerHTML = sr.context.user.fullName;
-                Sfdc.canvas.byId('profile').src = (photoUri.indexOf("http")==0 ? "" :sr.instanceUrl) + photoUri;
-                Sfdc.canvas.byId('firstname').innerHTML = sr.context.user.firstName;
-                Sfdc.canvas.byId('lastname').innerHTML = sr.context.user.lastName;
-                Sfdc.canvas.byId('username').innerHTML = sr.context.user.userName;
-                Sfdc.canvas.byId('email').innerHTML = sr.context.user.email;
-                Sfdc.canvas.byId('company').innerHTML = sr.context.organization.name;
-
-                chatterTalk.init(sr, "chatter-submit", "speech-input-field", function(data) {
-                    Sfdc.canvas.byId('status').innerHTML = data.statusText;
-                });
+               
+                var queryUrl = sr.instanceUrl+sr.context.links.queryUrl;
+                var soqlQuery="SELECT Id,Name,Author__c,Famous_Line__c from Book__c limit 10";
+                Sfdc.canvas.client.ajax(queryUrl+"?q="+soqlQuery,
+				{
+					token : sr.oauthToken,
+					method: 'GET',
+					contentType: "application/json",
+					success : function(data) {
+							
+							  	var template = '<ul class="thumbnails">{{#records}}<li><div class="thumbnail"><img src="/barcode?code={{Id}}" alt=""><h5>'+
+							  				   '<a href="#">{{Name}}</a></h5>'+
+							  				   '<blockquote class="pull-right"><p>{{Famous_Line__c}}</p><small>{{Author__c}}</small></blockquote></div></li>{{/records}}</ul>';
+								var html = Mustache.to_html(template, data.payload);
+								jQuery("#contactBadges").html(html);
+							  }
+				});
             });
 
         </script>
@@ -79,40 +108,17 @@ POSSIBILITY OF SUCH DAMAGE.
         <div id="content">
             <div id="header">
                 <h1 >Hello <span id='fullname'></span>!</h1>
-                <h2>Welcome to the Force.com Canvas Java Quick Start Template!</h2>
+                <h2>Force.com Canvas-Heroku - Library Book label Printer Sample</h2>
             </div>
 
-            <div id="canvas-content">
-                <h1>Canvas Request</h1>
-                <h2>Below is some information received in the Canvas Request:</h2>
-                <div id="canvas-request">
-                    <table border="0" width="100%">
-                        <tr>
-                            <td></td>
-                            <td><b>First Name: </b><span id='firstname'></span></td>
-                            <td><b>Last Name: </b><span id='lastname'></span></td>
-                        </tr>
-                        <tr>
-                            <td><img id='profile' border="0" src="" /></td>
-                            <td><b>Username: </b><span id='username'></span></td>
-                            <td colspan="2"><b>Email Address: </b><span id='email'></span></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td colspan="3"><b>Company: </b><span id='company'></span></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="canvas-chatter">
-                    <table border="0" width="100%">
-                        <tr>
-                            <td width="15%"><b>Post to Chatter:&nbsp</b></td>
-                            <td width="65%"><input id="speech-input-field" type="text" x-webkit-speech/></td>
-                            <td width="6%"><button id="chatter-submit" type="submit"/></td>
-                            <td width="10%"><span id="status" style="color:green"></span></td>
-                        </tr>
-                    </table>
-                </div>
+            <div id="container">
+                 <div class="row">
+					<div class="span1">
+					</div>
+					<div class="span11" id="contactBadges">
+						
+					</div>
+				</div>
             </div>
         </div>
 

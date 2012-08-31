@@ -8,4 +8,12 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    <servlet>
+		<servlet-name>BarCodeServlet</servlet-name>
+		<servlet-class>servlets.BarcodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BarCodeServlet</servlet-name>
+		<url-pattern>/barcode</url-pattern>
+	</servlet-mapping>
 </web-app>
