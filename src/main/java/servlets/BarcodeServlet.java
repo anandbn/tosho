@@ -23,7 +23,7 @@ public class BarcodeServlet extends HttpServlet {
         String barCodeSrc = request.getParameter("code");
         try {
             BarcodeGenerator.generateCodeToStream(response.getOutputStream(), 
-                                                  String.format("%012d",barCodeSrc ), 
+                                                  String.format("0000%s",barCodeSrc ), 
                                                   BarcodeFormat.UPC_A, 30, 100, "png");
         } catch (WriterException e) {
             // TODO Auto-generated catch block
