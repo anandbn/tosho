@@ -84,7 +84,7 @@ POSSIBILITY OF SUCH DAMAGE.
                 Sfdc.canvas.oauth.token(sr.oauthToken);
                
                 var queryUrl = sr.instanceUrl+sr.context.links.queryUrl;
-                var soqlQuery="SELECT Id,Name,Author__c,Famous_Line__c from Book__c limit 10";
+                var soqlQuery="SELECT Id,Name,Author__c,Famous_Line__c,Book_Id__c from Book__c limit 10";
                 Sfdc.canvas.client.ajax(queryUrl+"?q="+soqlQuery,
 				{
 					token : sr.oauthToken,
@@ -92,7 +92,7 @@ POSSIBILITY OF SUCH DAMAGE.
 					contentType: "application/json",
 					success : function(data) {
 							
-							  	var template = '<ul class="thumbnails">{{#records}}<li><div class="thumbnail"><img src="/barcode?code={{Id}}" alt=""><h5>'+
+							  	var template = '<ul class="thumbnails">{{#records}}<li><div class="thumbnail"><img src="/barcode?code={{Book_Id__c}}" alt=""><h5>'+
 							  				   '<a href="#">{{Name}}</a></h5>'+
 							  				   '<blockquote class="pull-right"><p>{{Famous_Line__c}}</p><small>{{Author__c}}</small></blockquote></div></li>{{/records}}</ul>';
 								var html = Mustache.to_html(template, data.payload);

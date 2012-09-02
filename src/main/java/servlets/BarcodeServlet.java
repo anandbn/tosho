@@ -22,12 +22,8 @@ public class BarcodeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String barCodeSrc = request.getParameter("code");
         try {
-            int hashCode = barCodeSrc.hashCode();
-            if(hashCode<0){
-                hashCode *=-1;
-            }
             BarcodeGenerator.generateCodeToStream(response.getOutputStream(), 
-                                                  String.format("%012d",hashCode ), 
+                                                  String.format("%012d",barCodeSrc ), 
                                                   BarcodeFormat.UPC_A, 30, 100, "png");
         } catch (WriterException e) {
             // TODO Auto-generated catch block
